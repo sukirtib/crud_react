@@ -17,19 +17,14 @@ const App = () => {
     });
     setItems(newItems);
   };
-    return (
-    <section className="section-center">
-      <Items items={items} editCompleted={editCompleted} />
-    </section>
-  );
-};
 
-    const removeItem = (itemId) => {
+  const removeItem = (itemId) => {
     const newItems = items.filter((item) => item.id !== itemId);
     setItems(newItems);
     toast.success("item deleted");
   };
-    return (
+
+  return (
     <section className="section-center">
       <ToastContainer position="top-center" />
       <Items
@@ -39,6 +34,6 @@ const App = () => {
       />
     </section>
   );
-
+};
 
 export default App;
