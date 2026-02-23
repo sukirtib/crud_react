@@ -11,6 +11,7 @@ const Items = ({ items, editCompleted, removeItem }) => {
           item={item} 
           editCompleted={editCompleted}
           removeItem={removeItem}
+          setEditId={setEditId}
            />
         );
       })}
