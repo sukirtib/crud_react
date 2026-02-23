@@ -1,22 +1,44 @@
 import { nanoid } from "nanoid";
 import Items from "./components/Items";
-import Form from "./components/Form"; // Make sure to import Form
+import Form from "./components/Form";
 import { groceryItems } from "./data/groceryItems";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react"; 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
+
+const getLocalStorage = () => {
+  let list = localStorage.getItem("grocery-list");
+  if (list) {
+    return JSON.parse(list);
+  }
+  return groceryItems; 
+};
+
+const setLocalStorage = (items) => {
+  localStorage.setItem("grocery-list", JSON.stringify(items));
+};
+
+
+const initialList = getLocalStorage();
+
 const App = () => {
-  const [items, setItems] = useState(groceryItems);
-    const [editId, setEditId] = useState(null);
+  const [items, setItems] = useState(initialList);
+  const [editId, setEditId] = useState(null);
   const inputRef = useRef(null);
 
+ 
   useEffect(() => {
     if (editId && inputRef.current) {
       inputRef.current.focus();
     }
   }, [editId]);
+
+
+  useEffect(() => {
+    setLocalStorage(items);
+  }, [items]);
 
   const editCompleted = (itemId) => {
     const newItems = items.map((item) => {
@@ -44,12 +66,13 @@ const App = () => {
     setItems(newItems);
     toast.success("grocery item added");
   };
-    const updateItemName = (newName) => {
+
+  const updateItemName = (newName) => {
     const newItems = items.map((item) => {
       if (item.id === editId) {
         return { ...item, name: newName };
       }
-            return item;
+      return item;
     });
     setItems(newItems);
     setEditId(null);
@@ -60,11 +83,11 @@ const App = () => {
     <section className="section-center">
       <ToastContainer position="top-center" />
       <Form 
-       addItem={addItem} 
-       updateItemName={updateItemName}
-       editItemId={editId}
-       itemToEdit={items.find((item) => item.id === editId)}
-       inputRef={inputRef}
+        addItem={addItem} 
+        updateItemName={updateItemName}
+        editItemId={editId}
+        itemToEdit={items.find((item) => item.id === editId)}
+        inputRef={inputRef}
       />
       <Items
         items={items}
