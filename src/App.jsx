@@ -89,7 +89,7 @@ const App = () => {
         items={items}
         editCompleted={editCompleted}
         removeItem={removeItem}
-        setEditId={setEditId}  {/* This was missing */}
+        setEditId={setEditId}
       />
     </section>
   );
