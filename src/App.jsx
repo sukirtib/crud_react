@@ -1,4 +1,6 @@
+import { nanoid } from "nanoid";
 import Items from "./components/Items";
+import Form from "./components/Form"; // Make sure to import Form
 import { groceryItems } from "./data/groceryItems";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -24,9 +26,21 @@ const App = () => {
     toast.success("item deleted");
   };
 
+  const addItem = (itemName) => {
+    const newItem = {
+      name: itemName,
+      completed: false,
+      id: nanoid(),
+    };
+    const newItems = [...items, newItem];
+    setItems(newItems);
+    toast.success("grocery item added");
+  };
+
   return (
     <section className="section-center">
       <ToastContainer position="top-center" />
+      <Form addItem={addItem} />
       <Items
         items={items}
         editCompleted={editCompleted}
