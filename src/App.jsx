@@ -7,7 +7,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-
 const getLocalStorage = () => {
   let list = localStorage.getItem("grocery-list");
   if (list) {
@@ -20,7 +19,6 @@ const setLocalStorage = (items) => {
   localStorage.setItem("grocery-list", JSON.stringify(items));
 };
 
-
 const initialList = getLocalStorage();
 
 const App = () => {
@@ -28,13 +26,11 @@ const App = () => {
   const [editId, setEditId] = useState(null);
   const inputRef = useRef(null);
 
- 
   useEffect(() => {
     if (editId && inputRef.current) {
       inputRef.current.focus();
     }
   }, [editId]);
-
 
   useEffect(() => {
     setLocalStorage(items);
@@ -93,7 +89,7 @@ const App = () => {
         items={items}
         editCompleted={editCompleted}
         removeItem={removeItem}
-        setEditId={setEditId}
+        setEditId={setEditId}  {/* This was missing */}
       />
     </section>
   );

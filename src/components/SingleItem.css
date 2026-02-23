@@ -3,26 +3,55 @@
   grid-template-columns: auto 1fr auto auto;
   column-gap: 1rem;
   align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.single-item:last-child {
+  border-bottom: none;
+}
+
+.single-item p {
+  font-size: 1rem;
+  color: #000;
 }
 
 .single-item .btn {
   cursor: pointer;
   color: #fff;
-  background: #06b6d4;
-  border: transparent;
+  background: #000;
+  border: 1px solid #000;
   border-radius: 0.25rem;
   padding: 0.375rem 0.75rem;
   font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .single-item .btn:hover {
-  background: #0e7490;
+  background: #fff;
+  color: #000;
 }
 
 .single-item .remove-btn {
-  background: #222;
+  background: #333;
+  border-color: #333;
 }
 
 .single-item .remove-btn:hover {
-  background: #900e0e;
+  background: #fff;
+  color: #333;
+}
+
+.single-item input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+  accent-color: #000;
+}
+
+.single-item input[type="checkbox"]:checked {
+  accent-color: #000;
 }

@@ -5,9 +5,28 @@
   background: #fff;
   border-radius: 0.25rem;
   padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #000;
 }
-
 
 .Toastify__toast {
   text-transform: capitalize;
+}
+
+.Toastify__toast--success {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.Toastify__toast--error {
+  background: #333 !important;
+  color: #fff !important;
+}
+
+.Toastify__progress-bar--success {
+  background: #fff !important;
+}
+
+.Toastify__progress-bar--error {
+  background: #fff !important;
 }
